@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+import { Text, View, StyleSheet, ViewPropTypes } from 'react-native';
 
-export default class CoachmarkContent extends Component {
+class CoachmarkContent extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.message}>
-          <Text style={styles.messageText}>{this.props.message}</Text>
+        <View style={this.props.messageStyle}>
+          <Text style={this.props.messageTextStyle}>{this.props.message}</Text>
         </View>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>OK</Text>
+        <View style={this.props.buttonStyle}>
+          <Text style={this.props.buttonTextStyle}>OK</Text>
         </View>
       </View>
     );
@@ -47,3 +48,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+CoachmarkContent.propTypes = {
+  message: PropTypes.string.isRequired,
+  messageStyle: ViewPropTypes.style,
+  messageTextStyle: ViewPropTypes.style,
+  buttonStyle: ViewPropTypes.style,
+  buttonTextStyle: ViewPropTypes.style,
+};
+
+CoachmarkContent.defaultProps = {
+  style: styles.container,
+  messageStyle: styles.message,
+  messageTextStyle: styles.messageText,
+  buttonStyle: styles.button,
+  buttonTextStyle: styles.buttonText,
+};
+
+export default CoachmarkContent;
