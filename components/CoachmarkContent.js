@@ -6,11 +6,11 @@ class CoachmarkContent extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={this.props.messageStyle}>
-          <Text style={this.props.messageTextStyle}>{this.props.message}</Text>
+        <View style={[styles.message, this.props.messageStyle]}>
+          <Text style={[styles.messageText, this.props.messageTextStyle]}>{this.props.message}</Text>
         </View>
-        <View style={this.props.buttonStyle}>
-          <Text style={this.props.buttonTextStyle}>OK</Text>
+        <View style={[styles.button, this.props.buttonStyle]}>
+          <Text style={[styles.buttonText, this.props.buttonTextStyle]}>OK</Text>
         </View>
       </View>
     );
@@ -52,17 +52,16 @@ const styles = StyleSheet.create({
 CoachmarkContent.propTypes = {
   message: PropTypes.string.isRequired,
   messageStyle: ViewPropTypes.style,
-  messageTextStyle: ViewPropTypes.style,
+  messageTextStyle: Text.propTypes.style,
   buttonStyle: ViewPropTypes.style,
-  buttonTextStyle: ViewPropTypes.style,
+  buttonTextStyle: Text.propTypes.style,
 };
 
 CoachmarkContent.defaultProps = {
-  style: styles.container,
-  messageStyle: styles.message,
-  messageTextStyle: styles.messageText,
-  buttonStyle: styles.button,
-  buttonTextStyle: styles.buttonText,
+  messageStyle: {},
+  messageTextStyle: {},
+  buttonStyle: {},
+  buttonTextStyle: {},
 };
 
 export default CoachmarkContent;
